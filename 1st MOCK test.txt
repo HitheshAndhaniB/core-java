@@ -1,0 +1,123 @@
+1.java is an object oriented programming laguage,
+  javac is an compiler it is compile the .java file in the compiler.
+
+2.jdk-java development kit.
+  JRE-java runtime environment.
+   jvm-java vertual machine.
+
+3.java file- java file is an main  file in java programming ,in this file contains source code.
+  class file- class file is an compiled file, in this file contains byte code,source code is converted into bytecode.
+
+4.java IDE'S- JDK,JVM,JRE.
+
+5.variables - variables is used to store the values.
+  types of variables-
+        1.local variables.
+	2.static variables.
+	3.Non-static variables.
+
+  example:1.int usn;
+          2.  class student{
+                 static int usn;
+		 static String name;
+		}
+	3.class student{
+                 static int usn;
+		 static String name;
+		}
+
+6.object oriented programming in java- java is an object oriented programming language, in java program cantains class and objects,
+   class is cantains objects and diffrent methods.
+
+
+7.compiled succefully.
+ error is no return statment,
+
+
+8.data type-data type is used to store the value for variable.
+
+primitive data type:-int,float,char,double,long
+	example:int num;
+	    Non primitive data type :-array,graph.
+	example : shape trianle;
+
+9.Dot operator:- Dot operator is used to initialize the value from the variables.
+
+10.Features of java:-
+ 	object oriented programming
+	speed 
+	multi tasking
+	rubost and secure
+        platforme independent
+
+11.Array - Array is an collection of elements,in size is fixed con't be changed,elements are accessed in array using index.
+	example:-int[] age;
+          
+12.class and object:-
+	class is an temlate in java class can have diffent objects and methods.
+	class is an keyword in java 
+	example:- class world{
+
+		}
+
+	objects:- In java object is an real world entity it have state and behaviors.
+        example:- class student{
+                  int usn;
+		  String address;
+			}
+
+13.keywords:- In java there are 49 keywords are ther, keywords are reserved words it can not changes,in java keywords are not take as variables and methods.
+             example:- class,new,abstract,int,float,char,break,switch,else,for,if,return.
+
+
+14.constructor:- Constructors is an special method in java,
+ 		 it as no return type,
+		 same name as a class name,
+		 constructors is used to initialize variable.
+     types:-1.default constructors,
+	    2.parametarized constructors,
+
+15.main method is static becouse it is not acceable any we declare the method as static,
+
+
+
+16.class xworkz{
+	public static void main(String[] args)
+	{
+		int[] num={12,3,2,45,6,7,6};
+		int n=num.length;
+		System.out.println("total length of the array is:"+n);
+	}
+
+17.method and method overloading:-
+	method:-In java method is an collection of methods,in method we can invoking  the method.
+
+	example:-class student{ 
+		String name;
+		int age;
+                
+ 		public static void main(String[] args){	
+		System.out.println("stdent name :"+name);
+		System.out.println("student age :"+age);
+		}
+		}
+
+	method overloding:-in java same method having diffent parameter is called method overloading.
+
+        example:-class student{
+		String name;
+		int age;
+		String address;
+		
+		public static void main(String[] args){
+
+		void details(String name){
+		System.out.println("String name"+name);
+		}
+
+		void details(String name,int age){
+		System.out.println("String name"+name);
+		System.out.println("Student age"+age);
+		}
+		}
+
