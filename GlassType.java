@@ -1,0 +1,2 @@
+enum GlassType{
+GORILLAGLASS,TINTEDGLASS}
