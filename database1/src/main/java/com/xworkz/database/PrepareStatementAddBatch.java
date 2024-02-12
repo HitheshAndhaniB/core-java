@@ -16,10 +16,14 @@ public class PrepareStatementAddBatch {
         try {
             Connection connection1 = DriverManager.getConnection(jdbcUrl,username,password);
             PreparedStatement preparedStatement = connection1.prepareStatement(query);
-            preparedStatement.setString(1,"Icic");
+            preparedStatement.setString(1,"Canara");
             preparedStatement.setString(2,"banglore");
-            preparedStatement.execute();
-            System.out.println("Deleted");
+            preparedStatement.addBatch();
+            preparedStatement.setString(1,"sbi");
+            preparedStatement.setString(2,"banglore");
+            preparedStatement.addBatch();
+            preparedStatement.executeBatch();
+            System.out.println("Deleted bank details");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
