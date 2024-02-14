@@ -1,9 +1,6 @@
 package listIterator;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class ShoeBrands {
     public static void main(String[] args) {
@@ -66,6 +63,11 @@ public class ShoeBrands {
             }
         }
         list.forEach(s-> System.out.println(s));
+
+        System.out.println("------Sorting elements in Decending-------");
+        Collections.sort(list,Collections.reverseOrder());
+        list.forEach(s-> System.out.println(s));
+
 
 
     }
