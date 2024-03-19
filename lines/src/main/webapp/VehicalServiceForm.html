@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehical Service</title>
+</head>
+<body>
+<h1>This is Vehical Service Form</h1><br><br>
+<form action="vehicalServiceForm" method="post">
+Service Date : <input type="date" name="date"><br>
+Current mileage :<input type="text" name="mileage"><br>
+Technician name : <input type="text" name="techname"><br>
+Service notes :<input type="text" name="service"><br>
+Customer name :<input type="text" name="cname"><br>
+Email :<input type="text" name="email"><br>
+Phone no :<input type="text" name="phone"><br>
+Address :<input type="text" name="address"><br>
+Service cost :<input type="text" name="cost"><br>
+Payment method :<select name="paymeny_meth">
+    <option value="">Select Payment Mode</option>
+    <option value="creait_card">Credit card</option>
+    <option value="debit_card">Debit card</option>
+    <option value="online">online payment</option>
+    <option value="upi">UPI</option>
+</select><br>
+Payment Status :<select name="status">
+    <option value="">Payment Status</option>
+    <option value="completed">Complited</option>
+    <option value="inProcess">In Process</option>
+    <option value="notCompleted">Not completed</option>
+</select><br>
+    <button type="submit" value="Submit">Submit</button>
+</form>
+
+</body>
+</html>
