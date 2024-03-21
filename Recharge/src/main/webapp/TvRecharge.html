@@ -1,10 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recharge Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .error-message {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+    <form onsubmit="return validateForm()" name="validation" action="TvRecharge" method="post">
+        <div class="mb-3">
+            <label for="customerId" class="form-label">Customer ID :</label>
+            <input type="text" class="form-control" onchange="customerId()" id="customerId" placeholder="Enter Customer ID" name="Customer-ID" maxlength="8" required>
+            <span id="customerIdError" class="error-message"></span>
+        </div>
+        <div class="mb-3">
+            <label for="Vender" class="form-label">Vender :</label>
+            <select class="form-select" onblur="vender()" name="Vender" id="Vender" required>
+                <option selected>Select-Vender</option>
+                <option>Airtel</option>
+                <option>Jio</option>
+                <option>VI</option>
+                <option>BSNL</option>
+            </select >
+            <span id="venderError" class="error-message"></span>
+        </div>
+        <div class="mb-3">
+            <label for="amount" class="form-label">Amount :</label>
+            <input type="text" class="form-control" onblur="amount()" id="amount" placeholder="Enter recharge amount" name="Amount" min="10" max="10000" required>
+            <span id="AmountError" class="error-message"></span>
+        </div>
+        <div class="mb-3">
+            <label for="color"  class="form-label">Recharge Type :</label>
+            <select name="Type" class="form-select" id="color" required>
+                <option selected>Select recharge type</option>
+                <option>Monthly</option>
+                <option>TopUp</option>
+                <option>Ott</option>
+            </select>
+            <span id="RechargeError" class="error-message"></span>
+        </div>
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <label for="accept" class="form-label">Accept :</label>
+            <input type="checkbox" class="btn btn-primary" name="Accept" id="accept" required>
+        </div>
+        <div>
+            <button type="submit" id="buttonId" class="btn btn-primary" disabled>Submit</button>
+        </div>
+    </form>
+</div>
+<script>
+    function validateForm() {
+        var isValid = true;
+
+        var customerId = document.forms["validation"]["Customer-ID"].value;
+        var customerIdError = document.getElementById("customerIdError");
+        if (customerId.length !== 8 || isNaN(customerId)) {
+            customerIdError.textContent = "Customer ID must be 8 digits long and numeric";
+            isValid = false;
+        } else {
+            customerIdError.textContent = "";
+        }
+
+        var vender = document.forms["validation"]["Vender"].value;
+        var venderError = document.getElementById("venderError");
+        if (vender === "Select-Vender") {
+            venderError.textContent = "Please select a Vender";
+            isValid = false;
+        } else {
+            venderError.textContent = "";
+        }
+
+        // Validate Amount
+        var amount = document.forms["validation"]["Amount"].value;
+        var amountError = document.getElementById("AmountError");
+        if (isNaN(amount) || amount < 10 || amount > 10000) {
+            amountError.textContent = "Amount must be numeric and between 10 and 10000";
+            isValid = false;
+        } else {
+            amountError.textContent = "";
+        }
+
+        // Validate Recharge Type
+        var type = document.forms["validation"]["Type"].value;
+        var rechargeError = document.getElementById("RechargeError");
+        if (type === "Select recharge type") {
+            rechargeError.textContent = "Please select a Recharge Type";
+            isValid = false;
+        } else {
+            rechargeError.textContent = "";
+        }
+
+        // Enable or disable submit button based on form validity
+        var submitButton = document.getElementById("buttonId");
+        submitButton.disabled = !isValid;
+
+        return isValid;
+    }
+
+    // Function to check if all fields are filled
+    function allFieldsFilled() {
+        var customerId = document.forms["validation"]["Customer-ID"].value;
+        var vender = document.forms["validation"]["Vender"].value;
+        var amount = document.forms["validation"]["Amount"].value;
+        var type = document.forms["validation"]["Type"].value;
+        var accept = document.forms["validation"]["Accept"].checked;
+
+        return customerId && vender !== "Select-Vender" && amount && type !== "Select recharge type" && accept;
+    }
+
+    // Function to enable/disable submit button
+    function updateSubmitButton() {
+        var submitButton = document.getElementById("buttonId");
+        submitButton.disabled = !allFieldsFilled();
+    }
+
+    // Call updateSubmitButton on input change
+    document.addEventListener("input", updateSubmitButton);
+</script>
 </body>
 </html>
