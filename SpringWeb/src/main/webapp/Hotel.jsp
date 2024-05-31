@@ -1,4 +1,5 @@
 <%@ page isELIgnored = "false" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,6 +101,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="RoomBooking.jsp">Room-Booking</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
                 </li>
             </ul>
@@ -108,39 +112,45 @@
 </nav>
 <div class="container">
     <h2>Hotel Application</h2>
-    <form name="hotelForm" action="hotel" method="post" onsubmit="return validateForm()">
+    <form name="hotelForm" action="hotel" method="post" onsubmit="return validateForm()" >
+<span style="color:red;">
+<c:forEach items="${errors}" var="objectError">
+${objectError.defaultMessage}</br>
+</c:forEach>
+${dto}
+</span>
         <div class="mb-3">
             <label for="name" class="form-label">Name :</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter name here" aria-describedby="nameHelp">
+            <input type="text" class="form-control" name="name" placeholder="Enter name here" value="${dto.name}" aria-describedby="nameHelp">
             <span id="nameError" class="error"></span>
         </div>
         <div class="mb-3">
             <label for="phone" class="form-label">Phone no :</label>
-            <input type="text" class="form-control" name="phone" placeholder="Enter Phone number here" aria-describedby="phoneHelp">
+            <input type="number" class="form-control" name="phone" placeholder="Enter Phone number here" value="${dto.phone} aria-describedby="phoneHelp">
             <span id="phoneError" class="error"></span>
         </div>
         <div class="mb-3">
             <label for="menu" class="form-label">Menu :</label>
-            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="menu" aria-describedby="menuHelp">
-                <option selected>Hotel Menu</option>
-                <option value="1">Chicken Biriyani</option>
-                <option value="2">Veg Biriyani</option>
-                <option value="3">Mutton Biriyani</option>
-                <option value="4">Chicken Kabab</option>
-                <option value="5">Fish fry</option>
-                <option value="6">Chicken 65</option>
-                <option value="7">Something else here</option>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="menu"  aria-describedby="menuHelp">
+                <option value="0" ${dto.menu==null ? 'selected' : ' '} selected>Hotel Menu</option>
+                <option value="1" ${dto.menu eq '1' ? 'selected' : ' '}>Chicken Biriyani</option>
+                <option value="2" ${dto.menu eq '2' ? 'selected' : ' '}>Veg Biriyani</option>
+                <option value="3" ${dto.menu eq '3' ? 'selected' : ' '}>Mutton Biriyani</option>
+                <option value="4" ${dto.menu eq '4' ? 'selected' : ' '}>Chicken Kabab</option>
+                <option value="5" ${dto.menu eq '5' ? 'selected' : ' '}>Fish fry</option>
+                <option value="6" ${dto.menu eq '6' ? 'selected' : ' '}>Chicken 65</option>
+                <option value="7" ${dto.menu eq '7' ? 'selected' : ' '}>Something else here</option>
             </select>
             <span id="menuError" class="error"></span>
         </div>
         <div class="mb-3">
             <label for="type" class="form-label">Payment Type :</label><br>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" value="Online" name="type">
+                <input class="form-check-input" type="radio" value="Online" ${dto.type eq 'Online' ? 'checked':' '} name="type">
                 <label class="form-check-label" for="type">Online</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" value="Offline" name="type">
+                <input class="form-check-input" type="radio" value="Offline" ${dto.type eq 'Offline' ? 'checked':' '} name="type">
                 <label class="form-check-label" for="type">Offline</label>
             </div>
             <span id="paymentError" class="error"></span>

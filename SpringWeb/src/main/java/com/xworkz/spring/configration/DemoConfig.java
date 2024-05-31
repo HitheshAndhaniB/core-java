@@ -15,6 +15,6 @@ public class DemoConfig extends AbstractAnnotationConfigDispatcherServletInitial
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/hotel"};
+        return new String[]{"/hotel","/room"};
     }
 }
